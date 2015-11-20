@@ -1,0 +1,46 @@
+Especificaciones:
+
+newAccount('user', 'email', 'password'):
+	returns {"text":"Account created."}
+
+login('email','password'):
+	returns
+		#En 'credenciales' viene true o false, true significa que se logueo exitosamente
+		#Si tiene cuenta y reservacion:
+			{
+				"credenciales" : credenciales,
+				"reservacion" : "true",
+				"data": data,
+				"ID" : ID,
+			}
+		#Si tiene cuenta pero no reservacion
+			{
+				"credenciales" : credenciales,
+				"reservacion" : "false",
+				"ID" : ID,
+			}
+		#Si no se encuentra la cuenta
+			{
+				"credenciales" : credenciales
+			}
+
+newReservation('ID','lockerCode','days'):
+	returns {
+		        "ID" : ID,
+		        "reservationDate" : str(reservationDate),
+		        "expirationDate" : str(expirationDate),
+		        "lockerCode" : lockerCode,
+		        "pin" : pin
+	        }
+
+deleteReservation('ID'):
+	returns {"text":"Reservation removed."}
+
+allLockersStatus():
+	returns [
+				{"lockerCode":"1", "lockerStatus":"True/False"},
+				{"lockerCode":"2", "lockerStatus":"True/False"},
+			]
+	
+unlockLocker('user'):
+	returns {"text":"Unlocked."}
